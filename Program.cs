@@ -26,38 +26,50 @@ class Program
     "Do you have to be so...like that?"
  }; 
 
-//randomizer c#sharp function
-int Picker(int min, int max)
-{
-    int insultValue = new Random().Next(min, max);
-    return insultValue;
-}
+    //randomizer c#sharp function
 
-void Display(List<string> insults, int Random){
-        Console.WriteLine($"{insults[Random]}");
-}
-
-// Console.WriteLine(insultList);
- 
-
-//make a list to add insults to
-
-while(insultList.Count < 3){
-    int insult1 = Picker(0, insults.Count - 1);
-    if(!insultList.Contains(insult1))
+    // you have a random function that picks a random number that will correspond to the index of the in insult list
+    //gives you an int
+    int Picker(int min, int max)
     {
-        insultList.Add(insult1);
+        int insultValue = new Random().Next(min, max);
+        return insultValue;
     }
-};
 
-for(int i = 0; i < insultList.Count; i++)
-{
-    int index = insultList[i];
 
-    Display(insults, index);
-}
+//your program should spit out three insults at end 
+//while insultlist(blank list) is less than three (list indexes also start at zero, so it will be two 0,1,2)
 
+        while(insultList.Count < 3){
+            //pick will pick a random int index of insults between 0, 6 there are 7
+            //store this function in a variable
+            int insult1 = Picker(0, insults.Count - 1);
+            //if insult list does not include corresponding int insult list number
+            if(!insultList.Contains(insult1))
+            {
+                //add that int index to insultlist
+                insultList.Add(insult1);
+                //so now you have three random numbers added on to insultlist
+            }
+        };
+
+        //now you need to access the string of words, from its insultlist index
+        //make a display function that will write out the string of words
+        //give it a parameter of insults, and random
+
+        void Display(List<string> insults, int Random){
+                Console.WriteLine($"{insults[Random]}");
         }
 
- }
+        //now tie 
+        for(int i = 0; i < insultList.Count; i++)
+        {
+            //int index assigned value will be a int
+            int index = insultList[i];
+
+        //display function will take that number and relate it back to the string lust of insults
+            Display(insults, index);
+        }
+     }
+   }
 }
